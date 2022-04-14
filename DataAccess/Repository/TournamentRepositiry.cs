@@ -12,27 +12,72 @@ namespace DataAccess.Repository
     {
         public bool Create(Tournament entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataContext.Tournaments.Add(entity);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public bool Update(Tournament entity)
+        {
+            try
+            {
+                Tournament IsExsist = GetOne(p => p.Id== entity.Id);
+                IsExsist=entity;
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public bool Delete(Tournament entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DataContext.Tournaments.Remove(entity);
+                return true;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public List<Tournament> GetAll(Predicate<Tournament> filter = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return filter==null ? DataContext.Tournaments :
+                DataContext.Tournaments.FindAll(filter);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
         public Tournament GetOne(Predicate<Tournament> filter = null)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                return filter==null ? DataContext.Tournaments[0] :
+                DataContext.Tournaments.Find(filter);
+            }
+            catch (Exception)
+            {
 
-        public bool Update(Tournament entity)
-        {
-            throw new NotImplementedException();
+                throw;
+            }
         }
     }
 }
