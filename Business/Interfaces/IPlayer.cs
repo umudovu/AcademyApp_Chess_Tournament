@@ -10,10 +10,10 @@ namespace Business.Interfaces
     public interface IPlayer
     {
         Player Creat(Player player);
-        Player Delete(Player player);   
-        Player Update(Player player);
+        Player Delete(int id);   
+        Player Update(string name,Player player);
 
         Player OnePlayer(string name);
-        List<Player> EloPlayer();
+        List<Player> EloPlayer(int elo1,int elo2);
     }
 }

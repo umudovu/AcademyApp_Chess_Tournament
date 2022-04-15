@@ -49,6 +49,7 @@ namespace DataAccess.Repository
             }
         }
 
+
         public List<Player> GetAll(Predicate<Player> filter = null)
         {
             try
