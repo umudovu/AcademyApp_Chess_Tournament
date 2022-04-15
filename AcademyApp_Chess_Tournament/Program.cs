@@ -41,11 +41,12 @@ namespace AcademyApp_Chess_Tournament
             playerService.Creat(player2);
             playerService.Creat(player3);
 
-            playerService.Update("Umud",player3);
+            playerService.Update("Umud",player2);
 
             foreach (var item in playerService.AllPlayer())
             {
-                Console.WriteLine($" Id: {item.Id} name: {item.Name} \n" +
+                Console.WriteLine($" Id: {item.Id} \n" +
+                    $"Name: {item.Name} \n" +
                     $"Country: {item.Country} \n" +
                     $"Rating: {item.Rating} \n" +
                     $"FIDE Title: {item.FIDE_titles}");

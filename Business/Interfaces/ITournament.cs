@@ -10,10 +10,10 @@ namespace Business.Interfaces
     public interface ITournament
     {
         Tournament Create(Tournament tournament);
-        Tournament Remove(Tournament tournament);
-        Tournament Update(Tournament tournament);
+        Tournament Remove(int id);
+        Tournament Update(int id,Tournament tournament);
 
 
-        Tournament GetTournament(string status);
+        Tournament GetTournament(int? id);
     }
 }

@@ -51,13 +51,13 @@ namespace Business.Services
 
         public Player Update(string name, Player player)
         {
-            Player Exsist = _playerRepository.GetOne(p => p.Name==name);
-            if (Exsist==null)
+            player = _playerRepository.GetOne(p => p.Name==name);
+            if (player==null)
             {
                 return null;
             }
-            _playerRepository.Update(Exsist);
-            return Exsist;
+            _playerRepository.Update(player);
+            return player;
         }
 
         public List<Player> AllPlayer()
