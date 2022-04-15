@@ -1,18 +1,14 @@
 ﻿using Business.Interfaces;
 using DataAccess.Repository;
 using Entities.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Utilities.Helper;
 
 namespace Business.Services
 {
-    internal class PlayerService : IPlayer
+    public class PlayerService : IPlayer
     {
         public static int Count { get; set; }
-
         private PlayerRepository _playerRepository;
 
         public PlayerService()
@@ -21,12 +17,13 @@ namespace Business.Services
         }
 
 
-        
+
 
         public Player Creat(Player player)
         {
             Count++;
             player.Id=Count;
+            player.FIDE_titles=player.Rating.Check();
             _playerRepository.Create(player);
             return player;
         }
@@ -42,9 +39,9 @@ namespace Business.Services
             return IsExsist;
         }
 
-        public List<Player> EloPlayer(int elomin,int elomax)
+        public List<Player> EloPlayer(int elomin, int elomax)
         {
-          return  _playerRepository.GetAll(p => p.Rating>=elomin && p.Rating<=elomax);
+            return _playerRepository.GetAll(p => p.Rating>=elomin && p.Rating<=elomax);
         }
 
         public Player OnePlayer(string name)
@@ -52,7 +49,7 @@ namespace Business.Services
             return _playerRepository.GetOne(p => p.Name==name);
         }
 
-        public Player Update(string name,Player player)
+        public Player Update(string name, Player player)
         {
             Player Exsist = _playerRepository.GetOne(p => p.Name==name);
             if (Exsist==null)
@@ -62,5 +59,12 @@ namespace Business.Services
             _playerRepository.Update(Exsist);
             return Exsist;
         }
+
+        public List<Player> AllPlayer()
+        {
+            return _playerRepository.GetAll();
+        }
+
+     
     }
 }

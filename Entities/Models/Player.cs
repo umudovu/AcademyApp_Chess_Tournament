@@ -15,5 +15,7 @@ namespace Entities.Models
         public int Age { get; set; }
         public string Country { get; set; }
         public int Rating { get; set; }
+
+        public string FIDE_titles { get; set; }
     }
 }
