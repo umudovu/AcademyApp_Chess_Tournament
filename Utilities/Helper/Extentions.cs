@@ -47,7 +47,7 @@ namespace Utilities.Helper
         public static void Select()
         {
             Extentions.Print(ConsoleColor.Cyan, "1-Create a new tournament\n" +
-                    "0-Watch top player list");
+                    "2-Watch top player list");
             Extentions.PrintTo(ConsoleColor.Cyan, "Select:");
 
         }
@@ -60,7 +60,8 @@ namespace Utilities.Helper
                     "5-Find player by name \n" +
                     "6-Find player to the title " +
                     "7-Start tournament\n" +
-                    "8-Add Top 10 Grandmaster \n");
+                    "8-Add Top 10 Grandmaster \n" +
+                    "9-All Players ");
             Extentions.PrintTo(ConsoleColor.Cyan, "Select:");
 
         }
@@ -111,13 +112,14 @@ namespace Utilities.Helper
 
         public enum PlayerMenu
         {
-            AllPlayer,
-            CreatePlayer ,
+            
+            CreatePlayer=1 ,
             RemovePlayer,
             UpdatePlayer,
             EloPlayer,
             OnePlayer,
             PlayerTitle,
+            AllPlayer=9,
         }
     }
 }

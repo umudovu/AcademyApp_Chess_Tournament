@@ -35,7 +35,7 @@ namespace AcademyApp_Chess_Tournament.Controller
                 string age = Console.ReadLine();
                 isnum = int.TryParse(age, out Page);
 
-            } while (!isnum);
+            } while (!isnum && Page<10 && Page>80);
 
             Extentions.PrintTo(ConsoleColor.Blue, "Player country:");
             string Pcountry = Console.ReadLine();
@@ -46,7 +46,7 @@ namespace AcademyApp_Chess_Tournament.Controller
                 Extentions.PrintTo(ConsoleColor.Blue, "Player Rating:");
                 string rating = Console.ReadLine();
                 isnum=int.TryParse(rating, out Prating);
-            } while (!isnum);
+            } while (!isnum && Prating<400 && Prating>3000);
             
 
             Player player = new Player()

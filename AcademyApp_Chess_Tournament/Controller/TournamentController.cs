@@ -22,12 +22,36 @@ namespace AcademyApp_Chess_Tournament.Controller
         {
             Extentions.PrintTo(ConsoleColor.Green, "Tournament name: ");
             string Tname=Console.ReadLine();
-            Extentions.PrintTo(ConsoleColor.Green, "Tournament degree (GM,IM,FM,CM): ");
-            string TDegree = Console.ReadLine();
+            bool isnum; int Tdegree;string degree="";
+            do
+            {
+                Extentions.PrintTo(ConsoleColor.Blue, "Tournament degree (1-GM,2-IM,3-FM,4-CM):");
+                string result = Console.ReadLine();
+                isnum = int.TryParse(result, out Tdegree);
+
+            } while (!isnum && Tdegree<0 && Tdegree>5);
+            switch (Tdegree)
+            {
+                case 1:
+                    degree ="GM";
+                    break;
+                case 2:
+                    degree ="IM";
+                    break;
+                case 3:
+                    degree ="FM";
+                    break;
+                case 4:
+                    degree ="CM";
+                    break;
+
+                default:
+                    break;
+            }
             Tournament tournament = new Tournament()
             {
                 Name=Tname,
-                Degree=TDegree
+                Degree=degree
             };
             Extentions.Print(ConsoleColor.Yellow, "Tournament created ");
         }
