@@ -65,16 +65,7 @@ namespace AcademyApp_Chess_Tournament.Controller
 
         public void GetAllPlayers()
         {
-            foreach (var item in _playerServices.AllPlayer())
-            {
-                Console.WriteLine($"Player id: {item.Id}\n" +
-                    $"Name: {item.Name} \n" +
-                    $"Surname: {item.Surname} \n" +
-                    $"Age: {item.Age} \n" +
-                    $"Country: {item.Country} \n" +
-                    $"FIFE title: {item.FIDE_titles}\n" +
-                    $"----------------------");
-            }
+            Extentions.PlayerInfo(_playerServices.AllPlayer());
         }
 
         public void RemovePlayer()
@@ -118,11 +109,19 @@ namespace AcademyApp_Chess_Tournament.Controller
             }
         }
 
-        public void FindPlayerById()
+        public void FindPlayerByName()
         {
-            Extentions.PrintTo(ConsoleColor.Yellow, "Enter the player name: ");
+            Extentions.PrintTo(ConsoleColor.Green, "Enter the player name: ");
             string name = Console.ReadLine();
-            _playerServices.OnePlayer(name);
+            Player pl = _playerServices.OnePlayer(name);
+            Extentions.PlayerInfo(pl);
+        }
+
+        public void FintPlayersTitle()
+        {
+            Extentions.PrintTo(ConsoleColor.Green, "Enter the FIDE title: ");
+            string title = Console.ReadLine();
+            Extentions.PlayerInfo(_playerServices.PlayerTitle(title));
         }
 
         public  void GMPlayer()

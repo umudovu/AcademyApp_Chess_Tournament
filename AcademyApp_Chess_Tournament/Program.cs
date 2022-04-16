@@ -32,7 +32,7 @@ namespace AcademyApp_Chess_Tournament
                             
                             do
                             {
-                                Console.Clear();
+                                //Console.Clear();
                                 Extentions.Select2();
                                 select = Console.ReadLine();
                                 input = Extentions.TryParse(select);
@@ -50,10 +50,16 @@ namespace AcademyApp_Chess_Tournament
                                     case (int)Extentions.PlayerMenu.EloPlayer:
                                         playerController.FindPlayerElo();
                                         break;
+                                    case (int)Extentions.PlayerMenu.OnePlayer:
+                                        playerController.FindPlayerByName();
+                                        break;
+                                    case (int)Extentions.PlayerMenu.PlayerTitle:
+                                        playerController.FintPlayersTitle();
+                                        break;
 
                                 }
 
-                            } while (input!=1 || input!=2);
+                            } while (input>=1 || input<=8);
 
 
 

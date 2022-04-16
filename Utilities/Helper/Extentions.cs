@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Entities.Models;
+using System;
+using System.Collections.Generic;
 
 namespace Utilities.Helper
 {
@@ -63,6 +65,30 @@ namespace Utilities.Helper
 
         }
 
+        public static void PlayerInfo(List<Player>player)
+        {
+            foreach (var item in player)
+            {
+                Extentions.Print(ConsoleColor.Green,$"Player id: {item.Id}\n" +
+                    $"Name: {item.Name} \n" +
+                    $"Surname: {item.Surname} \n" +
+                    $"Age: {item.Age} \n" +
+                    $"Country: {item.Country} \n" +
+                    $"FIFE title: {item.FIDE_titles}\n" +
+                    $"----------------------");
+            }
+        }
+        public static void PlayerInfo(Player player)
+        {
+            Extentions.Print(ConsoleColor.Green, $"Player id: {player.Id}\n" +
+                    $"Name: {player.Name} \n" +
+                    $"Surname: {player.Surname} \n" +
+                    $"Age: {player.Age} \n" +
+                    $"Country: {player.Country} \n" +
+                    $"FIFE title: {player.FIDE_titles}\n" +
+                    $"----------------------");
+        }
+
         public static int TryParse(string input)
         {
             bool IsNum;
@@ -92,9 +118,6 @@ namespace Utilities.Helper
             EloPlayer,
             OnePlayer,
             PlayerTitle,
-            
-            
-            
         }
     }
 }
