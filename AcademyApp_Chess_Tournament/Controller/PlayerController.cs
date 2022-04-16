@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities.Helper;
 
 namespace AcademyApp_Chess_Tournament.Controller
 {
@@ -20,6 +21,48 @@ namespace AcademyApp_Chess_Tournament.Controller
         }
 
 
+        public void CreatePlayer()
+        {
+            Extentions.PrintTo(ConsoleColor.Blue, "Player name:");
+            string Pname=Console.ReadLine();
+            Extentions.PrintTo(ConsoleColor.Blue, "Player surname:");
+            string Psurname = Console.ReadLine();
+            
+            bool isnum; int Page;
+            do
+            {
+                Extentions.PrintTo(ConsoleColor.Blue, "Player age:");
+                string age = Console.ReadLine();
+                isnum = int.TryParse(age, out Page);
+
+            } while (!isnum);
+
+            Extentions.PrintTo(ConsoleColor.Blue, "Player country:");
+            string Pcountry = Console.ReadLine();
+            
+            int Prating;
+            do
+            {
+                Extentions.PrintTo(ConsoleColor.Blue, "Player Rating:");
+                string rating = Console.ReadLine();
+                isnum=int.TryParse(rating, out Prating);
+            } while (!isnum);
+            
+
+            Player player = new Player()
+            {
+                Name=Pname,
+                Surname=Psurname,
+                Age=Page,
+                Country=Pcountry,
+                Rating=Prating
+            };
+            _playerServices.Creat(player);
+
+            Extentions.Print(ConsoleColor.Green, "Player created");
+
+        }
+
         public void GetAllPlayers()
         {
             foreach (var item in _playerServices.AllPlayer())
@@ -29,11 +72,58 @@ namespace AcademyApp_Chess_Tournament.Controller
                     $"Surname: {item.Surname} \n" +
                     $"Age: {item.Age} \n" +
                     $"Country: {item.Country} \n" +
-                    $"FIFE title: {item.FIDE_titles}");
+                    $"FIFE title: {item.FIDE_titles}\n" +
+                    $"----------------------");
             }
         }
 
+        public void RemovePlayer()
+        {
+            bool isnum = false;
+            int id;
+            do
+            {
+                Extentions.PrintTo(ConsoleColor.Red, "Enter the player id: ");
+                string isid=Console.ReadLine();
+                isnum=int.TryParse(isid, out id);
+            } while (!isnum);
+            _playerServices.Delete(id);
+            Extentions.PrintTo(ConsoleColor.Red, "Player removed ");
+        }
 
+        public void UpdatePlayer()
+        {
+            Extentions.PrintTo(ConsoleColor.Yellow, "Enter the player name: ");
+            string NewName=Console.ReadLine();
+            Extentions.PrintTo(ConsoleColor.Yellow, "Which player do you want to change?: ");
+            string OldName=Console.ReadLine();
+            Player updateplayer=_playerServices.OnePlayer(OldName);
+            _playerServices.Update(NewName, updateplayer);
+            Extentions.PrintTo(ConsoleColor.Yellow, "Player updated ");
+        }
+
+        public void FindPlayerElo()
+        {
+            Extentions.PrintTo(ConsoleColor.Green, "Enter minimum rating: ");
+            string minrating=Console.ReadLine();
+            int Minrating = Extentions.TryParse(minrating);
+            Extentions.PrintTo(ConsoleColor.Green, "Enter maximum rating: ");
+            string maxrating = Console.ReadLine();
+            int Maxrating = Extentions.TryParse(minrating);
+            foreach (var item in _playerServices.EloPlayer(Minrating,Maxrating))
+            {
+                Extentions.PrintTo(ConsoleColor.Green, $"Player name: {item.Name} \n" +
+                    $"Player rating: {item.Rating}\n" +
+                    $"---------------- ");
+            }
+        }
+
+        public void FindPlayerById()
+        {
+            Extentions.PrintTo(ConsoleColor.Yellow, "Enter the player name: ");
+            string name = Console.ReadLine();
+            _playerServices.OnePlayer(name);
+        }
 
         public  void GMPlayer()
         {
@@ -66,7 +156,7 @@ namespace AcademyApp_Chess_Tournament.Controller
                 Name = "Teimour",
                 Surname= "Radjabov",
                 Age=30,
-                Country="Norway",
+                Country="Azerbaijan",
                 Rating=2765
             };
             Player player5 = new Player()

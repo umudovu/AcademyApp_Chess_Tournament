@@ -21,9 +21,7 @@ namespace AcademyApp_Chess_Tournament
 
                 do
                 {
-                    Extentions.Print(ConsoleColor.Cyan, "1-Create a new tournament\n" +
-                    "0-Watch top player list");
-                    Extentions.PrintTo(ConsoleColor.Cyan, "Select:");
+                    Extentions.Select();
                     select = Console.ReadLine();
                     input = Extentions.TryParse(select);
 
@@ -31,17 +29,42 @@ namespace AcademyApp_Chess_Tournament
                     {
                         case (int)Extentions.TourMenu.CreateTournament:
                             tournamentController.CreatTournament();
+                            
+                            do
+                            {
+                                Console.Clear();
+                                Extentions.Select2();
+                                select = Console.ReadLine();
+                                input = Extentions.TryParse(select);
+                                switch (input)
+                                {
+                                    case (int)Extentions.PlayerMenu.CreatePlayer:
+                                        playerController.CreatePlayer();
+                                        break;
+                                    case (int)Extentions.PlayerMenu.RemovePlayer:
+                                        playerController.RemovePlayer();
+                                        break;
+                                    case (int)Extentions.PlayerMenu.UpdatePlayer:
+                                        playerController.UpdatePlayer();
+                                        break;
+                                    case (int)Extentions.PlayerMenu.EloPlayer:
+                                        playerController.FindPlayerElo();
+                                        break;
+
+                                }
+
+                            } while (input!=1 || input!=2);
+
+
+
+
+
 
                             break;
 
                         case (int)Extentions.PlayerMenu.AllPlayer:
                             playerController.GMPlayer();
                             playerController.GetAllPlayers();
-                            break;
-
-
-
-                        default:
                             break;
                     }
 

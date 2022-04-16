@@ -29,7 +29,10 @@ namespace AcademyApp_Chess_Tournament.Controller
                 Name=Tname,
                 Degree=TDegree
             };
+            Extentions.Print(ConsoleColor.Yellow, "Tournament created ");
         }
+
+      
 
 
     }
