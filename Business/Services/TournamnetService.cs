@@ -55,5 +55,9 @@ namespace Business.Services
            return _tournamentRepositiry.GetOne(t=>t.Id==id);
         }
 
+        public List<Tournament> GetAll()
+        {
+            return _tournamentRepositiry.GetAll();
+        }
     }
 }

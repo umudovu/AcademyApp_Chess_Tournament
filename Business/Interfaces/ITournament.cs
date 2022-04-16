@@ -15,5 +15,7 @@ namespace Business.Interfaces
 
 
         Tournament GetTournament(int? id);
+
+        List<Tournament> GetAll();
     }
 }

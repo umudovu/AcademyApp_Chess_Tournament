@@ -1,6 +1,8 @@
-﻿using Business.Services;
+﻿using AcademyApp_Chess_Tournament.Controller;
+using Business.Services;
 using Entities.Models;
 using System;
+using Utilities.Helper;
 
 namespace AcademyApp_Chess_Tournament
 {
@@ -8,51 +10,48 @@ namespace AcademyApp_Chess_Tournament
     {
         static void Main(string[] args)
         {
-            PlayerService playerService = new PlayerService();
-
-
-            Player player1 = new Player()
+           
+            Extentions.Print(ConsoleColor.Cyan, "Welcome to Chess Championship");
+            while (true)
             {
-                Name="Umud",
-                Surname="Umudov",
-                Age=26,
-                Country="Azerbaijan",
-                Rating=2232
-            };
-            Player player2 = new Player()
-            {
-                Name="Lorem",
-                Surname="falan",
-                Age=22,
-                Country="Azerbaijan",
-                Rating=2370
-            };
-            Player player3 = new Player()
-            {
-                Name="Sade",
-                Surname="falan",
-                Age=22,
-                Country="Azerbaijan",
-                Rating=2500
-            };
+                PlayerController playerController = new PlayerController();
+                TournamentController tournamentController = new TournamentController();
+                string select;
+                int input;
+
+                do
+                {
+                    Extentions.Print(ConsoleColor.Cyan, "1-Create a new tournament\n" +
+                    "0-Watch top player list");
+                    Extentions.PrintTo(ConsoleColor.Cyan, "Select:");
+                    select = Console.ReadLine();
+                    input = Extentions.TryParse(select);
+
+                    switch (input)
+                    {
+                        case (int)Extentions.TourMenu.CreateTournament:
+                            tournamentController.CreatTournament();
+
+                            break;
+
+                        case (int)Extentions.PlayerMenu.AllPlayer:
+                            playerController.GMPlayer();
+                            playerController.GetAllPlayers();
+                            break;
 
 
-            playerService.Creat(player1);
-            playerService.Creat(player2);
-            playerService.Creat(player3);
 
-            playerService.Update("Umud",player2);
+                        default:
+                            break;
+                    }
 
-            foreach (var item in playerService.AllPlayer())
-            {
-                Console.WriteLine($" Id: {item.Id} \n" +
-                    $"Name: {item.Name} \n" +
-                    $"Country: {item.Country} \n" +
-                    $"Rating: {item.Rating} \n" +
-                    $"FIDE Title: {item.FIDE_titles}");
+
+                } while (input!=0 || input!=1);
+
+                break;
             }
 
-           
+
 
 
         }

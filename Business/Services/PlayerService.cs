@@ -65,6 +65,9 @@ namespace Business.Services
             return _playerRepository.GetAll();
         }
 
-     
+        public List<Player> PlayerTitle(string title)
+        {
+            return _playerRepository.GetAll(p=>p.FIDE_titles==title);
+        }
     }
 }
