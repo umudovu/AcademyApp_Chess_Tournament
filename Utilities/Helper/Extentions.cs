@@ -66,28 +66,30 @@ namespace Utilities.Helper
 
         }
 
-        public static void PlayerInfo(List<Player>player)
+        public static void PlayerInfo(List<Player> player)
         {
             foreach (var item in player)
             {
-                Extentions.Print(ConsoleColor.Green,$"Player id: {item.Id}\n" +
-                    $"Name: {item.Name} \n" +
-                    $"Surname: {item.Surname} \n" +
-                    $"Age: {item.Age} \n" +
-                    $"Country: {item.Country} \n" +
-                    $"FIFE title: {item.FIDE_titles}\n" +
-                    $"----------------------");
+                Extentions.Print(ConsoleColor.Green, $"Player id: {item.Id}\n" +
+                                                     $"Name: {item.Name} \n" +
+                                                     $"Surname: {item.Surname} \n" +
+                                                     $"Age: {item.Age} \n" +
+                                                     $"Country: {item.Country} \n" +
+                                                     $"Player rating: {item.Rating} \n" +
+                                                     $"FIFE title: {item.FIDE_titles}\n" +
+                                                     $"----------------------");
             }
         }
         public static void PlayerInfo(Player player)
         {
             Extentions.Print(ConsoleColor.Green, $"Player id: {player.Id}\n" +
-                    $"Name: {player.Name} \n" +
-                    $"Surname: {player.Surname} \n" +
-                    $"Age: {player.Age} \n" +
-                    $"Country: {player.Country} \n" +
-                    $"FIFE title: {player.FIDE_titles}\n" +
-                    $"----------------------");
+                                                 $"Name: {player.Name} \n" +
+                                                 $"Surname: {player.Surname} \n" +
+                                                 $"Age: {player.Age} \n" +
+                                                 $"Country: {player.Country} \n" +
+                                                 $"Player rating: {player.Rating} \n" +
+                                                 $"FIFE title: {player.FIDE_titles}\n" +
+                                                 $"----------------------");
         }
 
         public static int TryParse(string input)
@@ -112,14 +114,20 @@ namespace Utilities.Helper
 
         public enum PlayerMenu
         {
-            
-            CreatePlayer=1 ,
+
+            CreatePlayer = 1,
             RemovePlayer,
             UpdatePlayer,
             EloPlayer,
             OnePlayer,
             PlayerTitle,
-            AllPlayer=9,
+            AllPlayer = 9,
+        }
+
+        public enum Event
+        {
+            Start = 7,
+            TopPlayer
         }
     }
 }

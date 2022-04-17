@@ -48,6 +48,10 @@ namespace Business.Services
         {
             return _playerRepository.GetOne(p => p.Name==name);
         }
+        public Player OnePlayer(int id)
+        {
+            return _playerRepository.GetOne(p => p.Id==id);
+        }
 
         public Player Update(string name, Player player)
         {
@@ -69,5 +73,7 @@ namespace Business.Services
         {
             return _playerRepository.GetAll(p=>p.FIDE_titles==title);
         }
+
+        
     }
 }

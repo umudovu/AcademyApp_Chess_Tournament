@@ -56,10 +56,10 @@ namespace AcademyApp_Chess_Tournament
                                     case (int)Extentions.PlayerMenu.PlayerTitle:
                                         playerController.FintPlayersTitle();
                                         break;
-                                    case 7:
+                                    case (int)Extentions.Event.Start:
                                         //start tournament
                                         break;
-                                    case 8:
+                                    case (int)Extentions.Event.TopPlayer:
                                         playerController.GMPlayer();
                                         break;
                                     case (int)Extentions.PlayerMenu.AllPlayer:
@@ -78,7 +78,7 @@ namespace AcademyApp_Chess_Tournament
 
                         case 2:
                             playerController.GMPlayer();
-                            playerController.GetAllPlayers();
+                            playerController.GetAllPlayers();   
                             break;
                     }
 

@@ -59,7 +59,7 @@ namespace AcademyApp_Chess_Tournament.Controller
             };
             _playerServices.Creat(player);
 
-            Extentions.Print(ConsoleColor.Green, "Player created");
+            Extentions.Print(ConsoleColor.Green, $"{player} Player created");
 
         }
 
@@ -71,7 +71,7 @@ namespace AcademyApp_Chess_Tournament.Controller
         public void RemovePlayer()
         {
             bool isnum = false;
-            int id;
+            int id=0;
             do
             {
                 Extentions.PrintTo(ConsoleColor.Red, "Enter the player id: ");
@@ -79,7 +79,8 @@ namespace AcademyApp_Chess_Tournament.Controller
                 isnum=int.TryParse(isid, out id);
             } while (!isnum);
             _playerServices.Delete(id);
-            Extentions.PrintTo(ConsoleColor.Red, "Player removed ");
+            //Player player = _playerServices.OnePlayer(id);
+            Extentions.PrintTo(ConsoleColor.Red, $" Player removed ");
         }
 
         public void UpdatePlayer()
@@ -90,7 +91,7 @@ namespace AcademyApp_Chess_Tournament.Controller
             string OldName=Console.ReadLine();
             Player updateplayer=_playerServices.OnePlayer(OldName);
             _playerServices.Update(NewName, updateplayer);
-            Extentions.PrintTo(ConsoleColor.Yellow, "Player updated ");
+            Extentions.PrintTo(ConsoleColor.Yellow, $"{updateplayer.Name} Player updated ");
         }
 
         public void FindPlayerElo()
@@ -216,7 +217,7 @@ namespace AcademyApp_Chess_Tournament.Controller
             _playerServices.Creat(player6);
             _playerServices.Creat(player7);
             _playerServices.Creat(player8);
-            _playerServices.Creat(player8);
+            _playerServices.Creat(player9);
             _playerServices.Creat(player10);
         }
 

@@ -14,6 +14,7 @@ namespace Business.Interfaces
         Player Update(string name,Player player);
 
         Player OnePlayer(string name);
+        Player OnePlayer(int id);
         List<Player> EloPlayer(int elo1,int elo2);
         List<Player> PlayerTitle(string title);
         List<Player> AllPlayer();
