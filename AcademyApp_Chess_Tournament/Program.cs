@@ -58,9 +58,9 @@ namespace AcademyApp_Chess_Tournament
                                         playerController.FintPlayersTitle();
                                         break;
                                     case (int)Extentions.Event.Start:
-                                        //start tournament
                                         gameConroller.Plays();
-
+                                        //Tour
+                                        
                                         break;
                                     case (int)Extentions.Event.TopPlayer:
                                         playerController.GMPlayer();
