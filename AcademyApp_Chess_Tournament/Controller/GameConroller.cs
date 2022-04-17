@@ -30,12 +30,12 @@ namespace AcademyApp_Chess_Tournament.Controller
 
             for (int i = 0; i < Size()-1; i++)
             {
-                Extentions.Print(ConsoleColor.Yellow,
-                    $"{i+1}. table plays: \n");
+                
                 int rnd = random.Next(0, Size()-1);
                 if (!arry.Contains(rnd))
                 {
-                    
+                    Extentions.Print(ConsoleColor.Yellow,
+                    $"{i+1}. table plays: \n");
                     Extentions.Print(ConsoleColor.Yellow, 
                         $"White- {players[rnd].FIDE_titles} {players[rnd].Name } {players[rnd].Surname} {players[rnd].Rating} \n" +
                         $"Black- {players[rnd+1].FIDE_titles} {players[rnd+1].Name} {players[rnd+1].Surname} {players[rnd+1].Rating}\n");
@@ -43,17 +43,17 @@ namespace AcademyApp_Chess_Tournament.Controller
                 }
             }
 
-            for (int i = 0; i < Size()-1; i++)
-            {
-                int result = random.Next(arry[i],arry[i+1]);
-                if (!arry.Contains(result))
-                {
-                    Extentions.Print(ConsoleColor.Yellow,
-                        $"{i+1}. table win: \n");
-                    Extentions.Print(ConsoleColor.Yellow, $"{players[result].FIDE_titles} {players[result].Name } {players[result].Surname} {players[result].Rating}");
+            //for (int i = 0; i < Size()-1; i++)
+            //{
+            //    int result = random.Next(arry[i],arry[i+1]);
+            //    if (!arry.Contains(result))
+            //    {
+            //        Extentions.Print(ConsoleColor.Yellow,
+            //            $"{i+1}. table win: \n");
+            //        Extentions.Print(ConsoleColor.Yellow, $"{players[result].FIDE_titles} {players[result].Name } {players[result].Surname} {players[result].Rating}");
 
-                }
-            }
+            //    }
+            //}
         }
 
 

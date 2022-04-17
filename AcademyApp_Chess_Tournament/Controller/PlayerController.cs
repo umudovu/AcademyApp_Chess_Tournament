@@ -1,5 +1,6 @@
 ﻿using Business.Interfaces;
 using Business.Services;
+using DataAccess;
 using Entities.Models;
 using System;
 using System.Collections.Generic;
@@ -80,7 +81,7 @@ namespace AcademyApp_Chess_Tournament.Controller
             } while (!isnum);
             _playerServices.Delete(id);
             //Player player = _playerServices.OnePlayer(id);
-            Extentions.PrintTo(ConsoleColor.Red, $" Player removed ");
+            Extentions.Print(ConsoleColor.Red, $"Player removed ");
         }
 
         public void UpdatePlayer()
@@ -102,20 +103,29 @@ namespace AcademyApp_Chess_Tournament.Controller
             Extentions.PrintTo(ConsoleColor.Green, "Enter maximum rating: ");
             string maxrating = Console.ReadLine();
             int Maxrating = Extentions.TryParse(minrating);
-            foreach (var item in _playerServices.EloPlayer(Minrating,Maxrating))
-            {
-                Extentions.PrintTo(ConsoleColor.Green, $"Player name: {item.Name} \n" +
-                    $"Player rating: {item.Rating}\n" +
-                    $"---------------- ");
-            }
+
+            List<Player> list=DataContext.Players.FindAll((p)=>p.Rating>=Minrating && p.Rating<=Maxrating);
+            //List<Player> list = _playerServices.EloPlayer(Minrating, Maxrating);
+            Extentions.PlayerInfo(list);
         }
 
         public void FindPlayerByName()
         {
-            Extentions.PrintTo(ConsoleColor.Green, "Enter the player name: ");
-            string name = Console.ReadLine();
-            Player pl = _playerServices.OnePlayer(name);
-            Extentions.PlayerInfo(pl);
+            bool isnum = false;
+            int id = 0;
+            Extentions.PrintTo(ConsoleColor.Green, "Enter the player id: ");
+            string isid = Console.ReadLine();
+            isnum=int.TryParse(isid, out id);
+            Player pl = _playerServices.OnePlayer(id); 
+            if (pl!=null)
+            {
+                Extentions.PlayerInfo(pl);
+            }
+            else
+            {
+                Extentions.Print(ConsoleColor.Red, "Not found");
+            }
+            
         }
 
         public void FintPlayersTitle()
