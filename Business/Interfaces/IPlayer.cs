@@ -19,5 +19,6 @@ namespace Business.Interfaces
         List<Player> PlayerTitle(string title);
         List<Player> AllPlayer();
 
+
     }
 }

@@ -58,7 +58,7 @@ namespace Utilities.Helper
                     "3-Update player \n" +
                     "4-Find players to the rating \n" +
                     "5-Find player by name \n" +
-                    "6-Find player to the title " +
+                    "6-Find player to the title \n" +
                     "7-Start tournament\n" +
                     "8-Add Top 10 Grandmaster \n" +
                     "9-All Players ");

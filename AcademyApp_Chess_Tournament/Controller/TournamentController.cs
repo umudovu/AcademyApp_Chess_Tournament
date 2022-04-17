@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Utilities.Helper;
+using Utilities.Interfaces;
 
 namespace AcademyApp_Chess_Tournament.Controller
 {
@@ -52,9 +53,6 @@ namespace AcademyApp_Chess_Tournament.Controller
             };
             Extentions.Print(ConsoleColor.Green, $"{tournament.Name} ({tournament.Degree}) Tournament created ");
         }
-
-      
-        
 
     }
 }

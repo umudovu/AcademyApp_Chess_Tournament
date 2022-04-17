@@ -16,6 +16,7 @@ namespace AcademyApp_Chess_Tournament
             {
                 PlayerController playerController = new PlayerController();
                 TournamentController tournamentController = new TournamentController();
+                GameConroller gameConroller = new GameConroller();
                 string select;
                 int input;
 
@@ -58,6 +59,8 @@ namespace AcademyApp_Chess_Tournament
                                         break;
                                     case (int)Extentions.Event.Start:
                                         //start tournament
+                                        gameConroller.Plays();
+
                                         break;
                                     case (int)Extentions.Event.TopPlayer:
                                         playerController.GMPlayer();

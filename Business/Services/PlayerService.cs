@@ -1,4 +1,5 @@
 ﻿using Business.Interfaces;
+using DataAccess;
 using DataAccess.Repository;
 using Entities.Models;
 using System.Collections.Generic;
@@ -21,8 +22,9 @@ namespace Business.Services
 
         public Player Creat(Player player)
         {
-            Count++;
+            
             player.Id=Count;
+            Count++;
             player.FIDE_titles=player.Rating.Check();
             _playerRepository.Create(player);
             return player;
@@ -74,6 +76,5 @@ namespace Business.Services
             return _playerRepository.GetAll(p=>p.FIDE_titles==title);
         }
 
-        
     }
 }
