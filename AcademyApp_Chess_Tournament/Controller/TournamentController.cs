@@ -20,16 +20,16 @@ namespace AcademyApp_Chess_Tournament.Controller
         
         public void CreatTournament()
         {
-            Extentions.PrintTo(ConsoleColor.Green, "Tournament name: ");
+            Extentions.PrintTo(ConsoleColor.Yellow, "Tournament name: ");
             string Tname=Console.ReadLine();
             bool isnum; int Tdegree;string degree="";
             do
             {
-                Extentions.PrintTo(ConsoleColor.Blue, "Tournament degree (1-GM,2-IM,3-FM,4-CM):");
+                Extentions.PrintTo(ConsoleColor.Yellow, "Tournament degree (1-GM,2-IM,3-FM,4-CM):");
                 string result = Console.ReadLine();
                 isnum = int.TryParse(result, out Tdegree);
 
-            } while (!isnum && Tdegree<0 && Tdegree>5);
+            } while (!(isnum && Tdegree>0 && Tdegree<5));
             switch (Tdegree)
             {
                 case 1:
@@ -44,20 +44,17 @@ namespace AcademyApp_Chess_Tournament.Controller
                 case 4:
                     degree ="CM";
                     break;
-
-                default:
-                    break;
             }
             Tournament tournament = new Tournament()
             {
                 Name=Tname,
                 Degree=degree
             };
-            Extentions.Print(ConsoleColor.Yellow, "Tournament created ");
+            Extentions.Print(ConsoleColor.Green, $"{tournament.Name} ({tournament.Degree}) Tournament created ");
         }
 
       
-
+        
 
     }
 }
